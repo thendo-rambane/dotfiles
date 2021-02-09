@@ -6,8 +6,8 @@ read -p "Enter git Email: " git_email
 read -p "Enter git Name: " git_name
 read -p "Enter git Username: " git_username
 
-git_config_file="~/dotfiles/.gitconfig"
-rm -r $git_config_file
+git_config_file="$HOME/dotfiles/.gitconfig"
+rm -rf $git_config_file
 touch $git_config_file
 git_config_file_contents="[user]\n"
 git_config_file_contents=$git_config_file_contents"\temail = ${git_email}\n"
@@ -81,6 +81,6 @@ curl -u "$git_username:$git_pub_api_key" \
 echo -e "\n"
 echo "===================================[Symlink .gitconfig]"
 
-ln -s "$git_config_file" ~/.gitconfig
+ln -s "$git_config_file" $HOME/.gitconfig
 
 

@@ -26,9 +26,9 @@ cd ~
 echo -e "\n"
 echo "[Symlink nvim]==========================================="
 
-if [ ! -d "~/.config" ];
+if [ ! -d "$HOME/.config/" ];
 then
-  mkdir $HOME/.config
+  mkdir $HOME/.config/
 fi
 
 #Symlink nvim
