@@ -8,21 +8,24 @@ read -p "Enter git Username: " git_username
 
 git_config_file="$HOME/dotfiles/.gitconfig"
 rm -rf $git_config_file
+rm -rf $HOME/.gitconfig
 touch $git_config_file
 git_config_file_contents="[user]\n"
 git_config_file_contents=$git_config_file_contents"\temail = ${git_email}\n"
 git_config_file_contents=$git_config_file_contents"\tname = ${git_name}\n"
 git_config_file_contents=$git_config_file_contents"\n"
-git_config_file_contents="[credential]\n"
+git_config_file_contents=$git_config_file_contents"[credential]\n"
 git_config_file_contents=$git_config_file_contents"\tusername = ${git_username}\n"
 echo -e "${git_config_file_contents}" > $git_config_file
+
+ln -s "$git_config_file" $HOME/.gitconfig
 
 echo -e "\n"
 echo "=========================================[Git ssh config]"
 
 pc_name=$(hostname)
-secrets_dir=$HOME".secrets"
-git_key_dir=$secrets_dir"/git_api_key"
+secrets_dir=$HOME/.secrets
+git_key_dir=$secrets_dir/git_api_key
 
 read -p "Enter git ssh key title(default ${pc_name}): " ssh_pub_key_title
 if [ -z "$ssh_pub_key_title" ];
@@ -81,6 +84,5 @@ curl -u "$git_username:$git_pub_api_key" \
 echo -e "\n"
 echo "===================================[Symlink .gitconfig]"
 
-ln -s "$git_config_file" $HOME/.gitconfig
 
 
