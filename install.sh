@@ -4,7 +4,7 @@ echo -e "\n"
 echo "===================================[Symlink .profile]"
 ls -s ./.profile ~/.profile
 
-
+source ~/.profile
 
 echo -e "\n"
 echo "===============================[Installing dot files]"
