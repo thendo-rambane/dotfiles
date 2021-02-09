@@ -7,7 +7,7 @@ sudo apt-get install -y \
   python-dev \
   python3-dev \
   python-pip \
-  python3-pip
+  python3-pip \
   build-essential \
   curl \
   expect \

@@ -21,8 +21,8 @@ echo "=========================================[Git ssh config]"
 echo -e "\n"
 
 pc_name=$(hostname)
-secrets_dir=$HOME.".secrets/"
-git_key_dir=$secrets_dir."/git_api_key"
+secrets_dir=$HOME"/.secrets/"
+git_key_dir=$secrets_dir"/git_api_key"
 
 read -p "Enter git ssh key title(default ${pc_name}): " ssh_pub_key_title
 if [ -z "$ssh_pub_key_title" ];

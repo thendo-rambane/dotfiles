@@ -1,14 +1,18 @@
 #!/bin/bash
 
 echo -e "\n"
-echo "===============================[Installing dot files]"
+echo "===================================[Symlink .profile]"
+ls -s ./.profile ~/.profile
+
+
+
 echo -e "\n"
+echo "===============================[Installing dot files]"
 
 bash ./scripts/install_deps.sh
 
 echo -e "\n"
 echo "===================================[Installing Node]"
-echo -e "\n"
 
 bash ./scripts/install_node.sh
 

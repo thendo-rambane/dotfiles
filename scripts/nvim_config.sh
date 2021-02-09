@@ -2,12 +2,9 @@
 
 echo -e "\n"
 echo "======================================[Installing pynvim]"
-echo -e "\n"
-
 
 echo -e "\n"
 echo "[Install virtualenvs]===================================="
-echo -e "\n"
 
 #setup vim python virtual envs
 virtualenv -p python2 ~/virtualenvs/pynvim
@@ -26,7 +23,11 @@ cd ~/virtualenvs/black
 
 echo -e "\n"
 echo "[Symlink nvim]==========================================="
-echo -e "\n"
+
+if [ ! -d "~/.config" ];
+then
+  mkdir $HOME/.config
+fi
 
 #Symlink nvim
 ls -s ./nvim/ ~/.config/nvim
