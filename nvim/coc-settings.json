@@ -1,0 +1,51 @@
+{
+  "rust.show_warnings": true,
+  "rust.clippy_preference": "on",
+  "rust.show_hover_context": true,
+  "coc-actions.hideCursor": true,
+  "coc-actions.showActionKind": true,
+  "coc-actions.useCursorLine": true,
+  "coc.preferences.hoverTarget": "preview",
+  "coc.preferences.jumpCommand": "edit",
+  "coc.preferences.colorSupport": true,
+  "coc.preferences.formatOnSaveFiletypes": [
+    "markdown",
+    "rust",
+    "json",
+    "vue",
+    "javascript"
+  ],
+  "rust-analyzer.lens.run": true,
+  "rust-analyzer.lens.implementations": true,
+  "rust-analyzer.lens.methodReferences": true,
+  "rust-analyzer.inlayHints.chainingHints": true,
+  "rust-analyzer.hoverActions.linksInHover": true,
+  "rust-analyzer.inlayHints.refreshOnInsertMode": true,
+  "diagnostic.separateRelatedInformationAsDiagnostics": true,
+  "diagnostic.enable": true,
+  "diagnostic.checkCurrentLine": true,
+  "diagnostic.virtualText": true,
+  "vetur.validation.script": true,
+  "eslint.run": "onSave",
+  "vetur.format.defaultFormatterOptions": {
+    "js-beautify-html": {
+      "wrap_attributes": "force-expand-multiline"
+    },
+    "prettyhtml": {
+      "printWidth": 79,
+      "wrap_attributes": "force-expand-multiline",
+      "singleQuote": false,
+      "wrapAttributes": true,
+      "sortAttributes": false
+    },
+    "prettier-eslint": {
+      "wrap_attributes": "force-expand-multiline",
+      "printWidth": 79
+    }
+  },
+  "vetur.format.defaultFormatter.html": "prettyhtml",
+  "vetur.format.defaultFormatter.js": "prettier-eslint",
+  "vetur.languageFeatures.codeActions": true,
+  "vetur.format.enable": true,
+  "eslint.autoFixOnSave": true
+}
