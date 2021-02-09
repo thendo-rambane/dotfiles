@@ -49,7 +49,7 @@ fi
 echo -e "\n"
 echo "[openssh][Checking]======================================"
 
-if [ -z "$(which ssh-keygen)"];
+if [ -z "$(which ssh-keygen)" ];
 then
   echo -e "\n"
   echo "[openssh][Not found]====================================="
