@@ -30,4 +30,5 @@ then
 fi
 
 #Symlink nvim
+cd ~/dotfiles
 ls -s ./nvim/ ~/.config/nvim
