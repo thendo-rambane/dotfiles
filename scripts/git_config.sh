@@ -81,6 +81,6 @@ curl -u "$git_username:$git_pub_api_key" \
 echo -e "\n"
 echo "===================================[Symlink .gitconfig]"
 
-ls -s "$git_config_file" ~/.gitconfig
+ln -s "$git_config_file" ~/.gitconfig
 
 

@@ -33,4 +33,4 @@ fi
 
 #Symlink nvim
 cd $HOME/dotfiles
-ls -s $HOME/dotfiles/nvim/ $HOME/.config/nvim
+ln -s $HOME/dotfiles/nvim/ $HOME/.config/nvim
