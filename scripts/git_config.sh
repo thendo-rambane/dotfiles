@@ -7,7 +7,8 @@ read -p "Enter git Name: " git_name
 read -p "Enter git Username: " git_username
 
 git_config_file="~/dotfiles/.gitconfig"
-touch -p $git_config_file
+rm -r $git_config_file
+touch $git_config_file
 git_config_file_contents="[user]\n"
 git_config_file_contents=$git_config_file_contents"\temail = ${git_email}\n"
 git_config_file_contents=$git_config_file_contents"\tname = ${git_name}\n"
@@ -20,7 +21,7 @@ echo -e "\n"
 echo "=========================================[Git ssh config]"
 
 pc_name=$(hostname)
-secrets_dir=$HOME".secrets/"
+secrets_dir=$HOME".secrets"
 git_key_dir=$secrets_dir"/git_api_key"
 
 read -p "Enter git ssh key title(default ${pc_name}): " ssh_pub_key_title
