@@ -13,7 +13,7 @@ git_cofig_file_contents=$git_cofig_file_contents"\temail = ${git_email}\n"
 git_cofig_file_contents=$git_cofig_file_contents"\tname = ${git_name}\n"
 git_cofig_file_contents=$git_cofig_file_contents"\n"
 git_cofig_file_contents="[credential]\n"
-git_cofig_file_contents=$git_cofig_file_contents"\username = ${git_username}\n"
+git_cofig_file_contents=$git_cofig_file_contents"\tusername = ${git_username}\n"
 echo -e "${git_cofig_file_contents}" > $git_cofig_file
 
 echo -e "\n"
