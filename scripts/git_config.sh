@@ -7,7 +7,7 @@ read -p "Enter git Email: " git_email
 read -p "Enter git Name: " git_name
 read -p "Enter git Username: " git_username
 
-git_cofig_file="../.gitconfig"
+git_cofig_file="~/dotfiles/.gitconfig"
 git_cofig_file_contents="[user]\n"
 git_cofig_file_contents=$git_cofig_file_contents"\temail = ${git_email}\n"
 git_cofig_file_contents=$git_cofig_file_contents"\tname = ${git_name}\n"
