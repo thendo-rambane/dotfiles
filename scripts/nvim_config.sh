@@ -15,7 +15,7 @@ fi
 cd $pynvim_dir
 
 pip=$pynvim_dir"/bin/pip"
-if [ -z "$($pip list | grep 'virtualenv')" ];
+if [ -z "$($pip list | grep 'pynvim')" ];
 then
   $pip install pynvim  
 fi
@@ -30,7 +30,7 @@ fi
 cd $pynvim_dir
 
 pip=$pynvim_dir"/bin/pip"
-if [ -z "$($pip list | grep 'virtualenv')" ];
+if [ -z "$($pip list | grep 'pynvim')" ];
 then
   $pip install pynvim  
 fi
@@ -45,7 +45,7 @@ fi
 cd $black_dir
 
 pip=$black_dir"/bin/pip"
-if [ -z "$($pip list | grep 'virtualenv')" ];
+if [ -z "$($pip list | grep 'black')" ];
 then
   $pip install black  
 fi
