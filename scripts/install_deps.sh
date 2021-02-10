@@ -13,9 +13,9 @@ dependencies=(
   "git" 
   "neovim"
 )
-for dependency in "${dependencies[*]}"; 
+for dependency in "${dependencies[@]}"; 
 do 
-  if [ -z "$(apt list --installed | grep '^${dependency}.*\[installed\]$')" ];
+  if [ -n "$(dpkg -l | grep '^ii\s\s'$dependency)" ];
   then
     sudo apt-get install -y $dependency;
   fi
