@@ -38,8 +38,10 @@ echo "[openssh][Getting github ssh keys]======================"
 registered_git_ssh_keys=$(curl \
   -u "$git_username:$git_pub_api_key" \
   -H "Accept: application/vnd.github.v3+json" \
-  https://api.github.com/user/keys -sf
+  https://api.github.com/user/keys -f
 )
+
+echo $registered_git_ssh_keys
 
 if [ -n "$(echo ${registered_git_ssh_keys} | grep $git_ssh_pub_key_title)" ];
 then
