@@ -51,7 +51,7 @@ then
       fi
     else
       echo "No github api key"
-      exit(1)
+      exit 1
     fi
   fi
   git_pub_api_key="$(cat "$git_key_dir")"
