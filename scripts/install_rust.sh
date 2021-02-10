@@ -1,4 +1,4 @@
-#!/usr/bin/expect -f
+#!/bin/expect -f
 
 echo -e "\n"
 echo "========================================[Installing Rust]"
