@@ -16,6 +16,10 @@ First go to your home directory
 
 `cd ~`
 
-Then clone or copy the repository here, then cd to the repository and run:
+Then clone or copy the repository here, then cd to the repository:
+
+`cd dotfiles`
+
+Then run:
 
 `bash install.sh`
