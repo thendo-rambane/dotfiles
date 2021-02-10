@@ -1,18 +1,32 @@
 #!/bin/bash
 echo -e "\n"
-echo "===============================[Installing dot file deps]"
-echo -e "\n"
+echo "===============================[Installing dotfiles deps]"
 
-sudo apt-get install -y \
-  python-dev \
-  python3-dev \
-  python-pip \
-  python3-pip \
-  build-essential \
-  curl \
-  expect \
-  git \
-  neovim
+dependencies=(
+  "python-dev" 
+  "python3-dev" 
+  "python-pip" 
+  "python3-pip"
+  "build-essential" 
+  "curl" 
+  "expect" 
+  "git" 
+  "neovim"
+)
+for dependency in "${dependencies[*]}"; 
+do 
+  if [ -z "$(which $dependency)" ];
+  then
+    sudo apt-get install -y $dependency;
+  fi
+done
 
-pip install virtualenv
-pip3 install virtualenv
+if [ -z "$(pip list | grep 'virtualenv')" ];
+then
+  pip install virtualenv
+fi
+
+if [ -z "$(pip3 list | grep 'virtualenv')" ];
+then
+  pip3 install virtualenv
+fi

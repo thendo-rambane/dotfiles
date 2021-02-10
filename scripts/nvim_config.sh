@@ -6,22 +6,50 @@ echo "======================================[Installing pynvim]"
 echo -e "\n"
 echo "[Install virtualenvs]===================================="
 
+pynvim_dir=$HOME/virtualenvs/pynvim
 #setup vim python virtual envs
-virtualenv -p python2 ~/virtualenvs/pynvim
-cd ~/virtualenvs/pynvim
-./bin/pip install pynvim  
-cd ~
+if [ ! -e $pynvim_dir ];
+then
+  virtualenv -p python2 $pynvim_dir
+fi
+cd pynvim_dir
 
-virtualenv -p python3 ~/virtualenvs/pynvim3
-cd ~/virtualenvs/pynvim3
-./bin/pip install pynvim  
-cd ~
+pip=$pynvim_dir"/bin/pip"
+if [ -z "$($pip list | grep 'virtualenv')" ];
+then
+  $pip install pynvim  
+fi
+cd $HOME
 
-virtualenv -p python3 ~/virtualenvs/black
-cd ~/virtualenvs/black
-./bin/pip install black  
-cd ~
+pynvim_dir=$HOME/virtualenvs/pynvim3
+#setup vim python virtual envs
+if [ ! -e $pynvim_dir ];
+then
+  virtualenv -p python3 $pynvim_dir
+fi
+cd pynvim_dir
 
+pip=$pynvim_dir"/bin/pip"
+if [ -z "$($pip list | grep 'virtualenv')" ];
+then
+  $pip install pynvim  
+fi
+cd $HOME
+
+black_dir=$HOME/virtualenvs/black
+#setup vim python virtual envs
+if [ ! -e $pynvim_dir ];
+then
+  virtualenv -p python3 $black_dir
+fi
+cd black_dir
+
+pip=$black_dir"/bin/pip"
+if [ -z "$($pip list | grep 'virtualenv')" ];
+then
+  $pip install black  
+fi
+cd $HOME
 
 echo -e "\n"
 echo "[Symlink nvim]==========================================="
@@ -32,6 +60,5 @@ then
 fi
 
 #Symlink nvim
-cd $HOME/dotfiles
 rm -fr $HOME/.config/nvim
 ln -s $HOME/dotfiles/nvim $HOME/.config/nvim
