@@ -18,6 +18,8 @@ do
   if [ -z "$(dpkg -l | grep '^ii\s\s'$dependency)" ];
   then
     sudo apt-get install -y $dependency;
+  else
+    echo "${dependency} alredy installed"
   fi
 done
 

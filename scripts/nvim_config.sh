@@ -61,4 +61,5 @@ fi
 
 #Symlink nvim
 rm -fr $HOME/.config/nvim
+rm -fr $HOME/dotfiles/nvim/nvim
 ln -s $HOME/dotfiles/nvim $HOME/.config/nvim
