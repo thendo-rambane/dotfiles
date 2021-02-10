@@ -15,7 +15,7 @@ dependencies=(
 )
 for dependency in "${dependencies[@]}"; 
 do 
-  if [ -n "$(dpkg -l | grep '^ii\s\s'$dependency)" ];
+  if [ -z "$(dpkg -l | grep '^ii\s\s'$dependency)" ];
   then
     sudo apt-get install -y $dependency;
   fi
