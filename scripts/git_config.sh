@@ -18,12 +18,32 @@ git_config_file_contents=$git_config_file_contents"[credential]\n"
 git_config_file_contents=$git_config_file_contents"\tusername = ${git_username}\n"
 echo -e "${git_config_file_contents}" > $git_config_file
 
+echo -e "\n"
+echo "===================================[Symlink .gitconfig]"
 ln -s "$git_config_file" $HOME/.gitconfig
 
 echo -e "\n"
 echo "=========================================[Git ssh config]"
 
-pc_name=$(hostname)
+function readJson {  
+  UNAMESTR=`uname`
+  if [[ "$UNAMESTR" == 'Linux' ]]; then
+    SED_EXTENDED='-r'
+  elif [[ "$UNAMESTR" == 'Darwin' ]]; then
+    SED_EXTENDED='-E'
+  fi; 
+
+  VALUE=`grep -m 1 "\"${2}\"" ${1} | sed ${SED_EXTENDED} 's/^ *//;s/.*: *"//;s/",?//'`
+
+  if [ ! "$VALUE" ]; then
+    echo "Error: Cannot find \"${2}\" in ${1}" >&2;
+    exit 1;
+  else
+    echo $VALUE ;
+  fi; 
+}
+
+pc_name="$(whoami)@$(hostname):$(cat /etc/machine-id)"
 secrets_dir=$HOME/.secrets
 git_key_dir=$secrets_dir/git_api_key
 
@@ -40,49 +60,27 @@ then
   then
     mkdir "$secrets_dir"
     touch "$git_key_dir"
-    cat /mnt/c/Users/ramba_enc4ybi/OneDrive/Documents/keys/git/api_key.txt > $git_key_dir
+    my_secret_key_dir=$(cat /mnt/c/Users/ramba_enc4ybi/OneDrive/Documents/keys/git/api_key.txt)
+    if [ -z "$(my_secret_key_dir | grep 'cat: ')"];
+    then
+      if [ -n "$my_secret_key_dir" ];
+      then
+        echo $my_secret_key_dir > $git_key_dir
+      fi
+    else
+      echo "No github api key"
+      exit(1)
+    fi
   fi
   git_pub_api_key="$(cat "$git_key_dir")"
 fi
 
+bash ./git_ssh_config.sh $git_email $git_username $git_pub_api_key $ssh_pub_key_title
 
-echo -e "\n"
-echo "[openssh][Checking]======================================"
-
-if [ -z "$(which ssh-keygen)" ];
-then
-  echo -e "\n"
-  echo "[openssh][Not found]====================================="
-
-  sudo apt update
-  sudo apt install openssh-client
-else
-
-  echo -e "\n"
-  echo "[openssh][Found]========================================="
-
-fi
-
-
-echo -e "\n"
-echo "[openssh][Generate public ssh key]======================="
-
-if [ -z "$(cat ~/.ssh/id_rsa.pub)" ];
-then
-  ssh-keygen -t rsa -b 4096 -C "$git_email"
-  ssh_pub_key="$(cat ~/.ssh/id_rsa.pub)"
-fi
   
-echo -e "\n"
-echo "[openssh][Setting github ssh key]======================="
-
-curl -u "$git_username:$git_pub_api_key" \
-  --data '{"title":"'"$ssh_pub_key_title"'","key":"'"$ssh_pub_key"'"}' \
-  https://api.github.com/user/keys
 
 
-echo -e "\n"
-echo "===================================[Symlink .gitconfig]"
+
 
 
 
