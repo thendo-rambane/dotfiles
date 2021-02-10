@@ -15,7 +15,7 @@ dependencies=(
 )
 for dependency in "${dependencies[*]}"; 
 do 
-  if [ -z "$(which $dependency)" ];
+  if [ -z "$(apt list --installed | grep '^${dependency}.*\[installed\]$')" ];
   then
     sudo apt-get install -y $dependency;
   fi

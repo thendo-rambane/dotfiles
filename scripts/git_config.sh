@@ -25,24 +25,6 @@ ln -s "$git_config_file" $HOME/.gitconfig
 echo -e "\n"
 echo "=========================================[Git ssh config]"
 
-function readJson {  
-  UNAMESTR=`uname`
-  if [[ "$UNAMESTR" == 'Linux' ]]; then
-    SED_EXTENDED='-r'
-  elif [[ "$UNAMESTR" == 'Darwin' ]]; then
-    SED_EXTENDED='-E'
-  fi; 
-
-  VALUE=`grep -m 1 "\"${2}\"" ${1} | sed ${SED_EXTENDED} 's/^ *//;s/.*: *"//;s/",?//'`
-
-  if [ ! "$VALUE" ]; then
-    echo "Error: Cannot find \"${2}\" in ${1}" >&2;
-    exit 1;
-  else
-    echo $VALUE ;
-  fi; 
-}
-
 pc_name="$(whoami)@$(hostname):$(cat /etc/machine-id)"
 secrets_dir=$HOME/.secrets
 git_key_dir=$secrets_dir/git_api_key
