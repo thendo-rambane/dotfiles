@@ -42,6 +42,8 @@ registered_git_ssh_keys=$(curl \
 )
 
 echo $registered_git_ssh_keys
+echo $(echo ${registered_git_ssh_keys} | grep $git_ssh_pub_key_title)
+echo "-------------------------------------------------------------------------"
 
 if [ -n "$(echo ${registered_git_ssh_keys} | grep $git_ssh_pub_key_title)" ];
 then
@@ -60,5 +62,7 @@ then
   else
     echo -e "Error: Could not register ssh id with key: ${git_ssh_pub_key_title} to github\n${result}"
   fi
+else
+
 fi
 
