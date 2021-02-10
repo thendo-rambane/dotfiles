@@ -41,7 +41,7 @@ registered_git_ssh_keys=$(curl \
   https://api.github.com/user/keys -sf
 )
 
-if [ -n "$(echo '$registered_git_ssh_keys' | grep '$git_ssh_pub_key_title')" ];
+if [ -n "$(echo ${registered_git_ssh_keys} | grep $git_ssh_pub_key_title)" ];
 then
   echo -e "\n"
   echo "[openssh][Setting github ssh key]======================="
