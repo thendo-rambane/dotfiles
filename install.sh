@@ -16,7 +16,7 @@ echo "===================================[Installing Node]"
 
 bash ./scripts/install_node.sh
 
-bash ./scripts/install_rust.sh
+expect ./scripts/install_rust.sh
 
 bash ./scripts/nvim_config.sh
 
