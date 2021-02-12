@@ -46,7 +46,7 @@ then
   echo -e "\n"
   echo "[openssh][Setting github ssh key]======================="
 
-  result= $(curl \
+  result=$(curl \
     -u "$git_username:$git_pub_api_key" \
     --data '{"title":"'"$git_ssh_pub_key_title"'","key":"'"$ssh_pub_key"'"}' \
     https://api.github.com/user/keys -s

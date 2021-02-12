@@ -59,8 +59,6 @@ fi
 
 bash $HOME/dotfiles/scripts/git_ssh_config.sh $git_email $git_username $git_pub_api_key $ssh_pub_key_title
 
-  
-
 
 
 

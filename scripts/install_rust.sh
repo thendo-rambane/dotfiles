@@ -1,16 +1,13 @@
 #!/bin/expect -f
 
-echo -e "\n"
-echo "========================================[Installing Rust]"
-echo -e "\n"
 
 set timeout -1
 
-spawn curl https://sh.rustup.rs -sSf | sh
+spawn $HOME/dotfiles/scripts/get_rustup.sh
 
-expect ">\r"
+expect "*>*"
 
-send -- "\r"
+send -- "1\r"
 
 expect "*/env\r"
 

@@ -134,7 +134,7 @@ set cindent
 set tabstop=2 shiftwidth=2 expandtab
 
 set encoding=UTF-8
-colorscheme gruvbox
+"colorscheme gruvbox
 "let g:gruvbox_improved_warnings=1
 
 function! IsNERDTreeOpen()
