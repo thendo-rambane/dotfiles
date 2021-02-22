@@ -5,6 +5,7 @@ Plug 'junegunn/fzf', {'dir': '~/.fzf','do': './install --all'}
 Plug 'junegunn/fzf.vim' " needed for previews
 Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 Plug 'antoinemadec/coc-fzf'
+Plug 'posva/vim-vue'
 Plug 'rust-lang/rust.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'scrooloose/nerdtree'
@@ -25,8 +26,10 @@ Plug 'tpope/vim-repeat'
 Plug 'cespare/vim-toml'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 call plug#end()
+  
 
 nnoremap <silent> <space>n :bn<CR>
+nnoremap <silent> <space>f <esc>:%bdelete<CR>:edit #<CR>normal `"<CR>
 nnoremap <silent> <space>N :bp<CR>
 nnoremap <silent> <space>d :bd<CR>
 
@@ -41,6 +44,9 @@ let g:loaded_ruby_support = 0
 let g:python_host_prog =  '~/virtualenvs/pynvim/bin/python'
 let g:python3_host_prog = '~/virtualenvs/pynvim3/bin/python'
 let g:black_virtualenv = '~/virtualenvs/black'
+
+let g:vue_pre_processors = 'detect_on_enter'
+
 "inoremap jk <ESC>
 nmap <C-b> :NERDTreeToggle<CR>
 nmap <C-_> <plug>NERDCommenterToggle
@@ -128,13 +134,15 @@ let g:ctrlp_user_command = [
 " j/k will move virtual lines (lines that wrap)
 noremap <silent> <expr> j (v:count == 0 ? 'gj' : 'j')
 noremap <silent> <expr> k (v:count == 0 ? 'gk' : 'k')
+noremap <silent> <down> j 
+noremap <silent> <up> k
 
 set smarttab
 set cindent
 set tabstop=2 shiftwidth=2 expandtab
 
 set encoding=UTF-8
-"colorscheme gruvbox
+colorscheme srcery
 "let g:gruvbox_improved_warnings=1
 
 function! IsNERDTreeOpen()

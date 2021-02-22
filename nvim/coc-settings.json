@@ -44,6 +44,7 @@
     }
   },
   "vetur.format.defaultFormatter.html": "prettyhtml",
+  "vetur.format.defaultFormatter.css": "prettier",
   "vetur.format.defaultFormatter.js": "prettier-eslint",
   "vetur.languageFeatures.codeActions": true,
   "vetur.format.enable": true,
