@@ -26,3 +26,7 @@ fi
 if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
 fi
+
+if [ -d "$HOME/installs/" ] ; then
+    PATH="$HOME/installs:$PATH"
+fi
