@@ -1,4 +1,4 @@
 .gitconfig
-.netrwhist
+*/*.netrwhist
 install_nvm.sh
 
