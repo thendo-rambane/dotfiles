@@ -1,8 +1,8 @@
 call plug#begin('~/.nvim/plugged')
   " Use release branch (recommend)
-  Plug 'neoclide/coc.nvim', {'branch': 'release'}
-  Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
-  Plug 'antoinemadec/coc-fzf'
+  " Plug 'neoclide/coc.nvim', {'branch': 'release'}
+  " Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
+  " Plug 'antoinemadec/coc-fzf'
   Plug 'rust-lang/rust.vim'
   Plug 'vim-airline/vim-airline'
   Plug 'ryanoasis/vim-devicons'
@@ -25,4 +25,8 @@ call plug#begin('~/.nvim/plugged')
   Plug 'cespare/vim-toml'
   Plug 'leafOfTree/vim-vue-plugin'
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+
+
+  Plug 'neovim/nvim-lspconfig'
+  Plug 'hrsh7th/nvim-compe'
 call plug#end()
