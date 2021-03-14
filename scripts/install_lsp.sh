@@ -1,5 +1,6 @@
+#!/bin/bash
+
 lspList=(
-  "efm-langserver"
   "bash-language-server"
   "vscode-css-languageserver-bin"
   "dockerfile-language-server-nodejs"
@@ -15,6 +16,7 @@ for lsp in "${lspList[@]}";
 do
   if [ -z "$(npm list -g $lsp | grep $lsp )" ];
   then
+    echo -e "Installing $lsp"
     npm i -g $lsp
   else
     echo -e $lsp" Installed"
