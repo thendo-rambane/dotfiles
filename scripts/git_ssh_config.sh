@@ -26,11 +26,11 @@ git_username=${2}
 git_pub_api_key=${3}
 git_ssh_pub_key_title=${4}
 
-if [ -z "$(cat ~/.ssh/id_rsa.pub)" ];
+if [ -z "$(cat $HOME/.ssh/id_rsa.pub)" ];
 then
   ssh-keygen -t rsa -b 4096 -C "$git_email"
 fi
-ssh_pub_key="$(cat ~/.ssh/id_rsa.pub)"
+ssh_pub_key="$(cat $HOME/.ssh/id_rsa.pub)"
   
 echo -e "\n"
 echo "[openssh][Getting github ssh keys]======================"

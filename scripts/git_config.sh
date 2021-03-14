@@ -25,7 +25,9 @@ ln -s "$git_config_file" $HOME/.gitconfig
 echo -e "\n"
 echo "=========================================[Git ssh config]"
 
-pc_name="$(whoami)@$(hostname):$(cat /etc/machine-id)"
+rand_numbers="$(echo $(date) | sha256sum)"
+rand_id=${rand_numbers:0:20}
+pc_name="$(whoami)@$(hostname):${rand_id}"
 secrets_dir=$HOME/.secrets
 git_key_dir=$secrets_dir/git_api_key
 

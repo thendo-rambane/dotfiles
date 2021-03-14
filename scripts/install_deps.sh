@@ -4,6 +4,16 @@ echo "===============================[Installing dotfiles deps]"
 
 sudo apt-get update
 dependencies=(
+  "ninja-build"
+  "gettext"
+  "libtool"
+  "libtool-bin"
+  "autoconf"
+  "automake"
+  "cmake"
+  "g++"
+  "pkg-config"
+  "unzip"
   "wget"
   "python-dev"
   "python3-dev"

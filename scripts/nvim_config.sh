@@ -6,19 +6,13 @@ echo "========================================[Installing nvim]"
 if [ -z "$(which nvim)" ];
 then
   cd $HOME
-  wget https://github.com/neovim/neovim/releases/download/v0.4.4/nvim.appimage
-  sudo chmod u+x nvim.appimage && ./nvim.appimage --appimage-extract
-  if [ ! -e $HOME/installs/nvim  ];
-  then
-    mkdir -p $HOME/installs/nvim
-  fi
-  cp $HOME/squashfs-root/* $HOME/installs/nvim/
-  if [ ! -e $HOME/.local/bin ];
-  then
-    mkdir $HOME/.local/bin/ -p
-  fi
-  ln -s $HOME/installs/nvim/usr/bin/nvim $HOME/.local/bin/nvim
-  rm $HOME/squashfs-root $HOME/.nvim.appimage -fr 
+  sudo rm -rf neovim
+  git clone https://github.com/neovim/neovim
+  cd neovim
+  sudo make CMAKE_BUILD_TYPE=RelWIthDebInfo
+  sudo make install
+  cd $HOME
+  sudo rm -rf neovim
 fi
 
 source $HOME/dotfiles/.profile
@@ -81,7 +75,7 @@ if [ ! -d "${HOME}/.config/" ];
 then
   mkdir $HOME/.config/
 fi
-
+bash $HOME/dotfiles/scripts/install_lsp.sh
 #Symlink nvim
 rm -fr $HOME/.config/nvim
 rm -fr $HOME/dotfiles/nvim/nvim

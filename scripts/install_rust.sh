@@ -1,6 +1,5 @@
 #!/bin/expect -f
 
-
 set timeout -1
 
 spawn $HOME/dotfiles/scripts/get_rustup.sh
