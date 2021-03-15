@@ -6,7 +6,9 @@ set mouse=a
 set smarttab
 set smartindent
 set cindent
-set tabstop=2 shiftwidth=2 expandtab
+set tabstop=2
+set shiftwidth=2
+set expandtab
 
 set encoding=utf-8
 set fileencoding=utf-8
@@ -23,11 +25,14 @@ set nobackup
 set nowritebackup
 set noswapfile
 
-set autochdir "Current file path is working dir
-set cmdheight=2 " Give more space for displaying messages.
+" Current file path is working dir
+set autochdir
 
-" Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
-" delays and poor user experience.
+" Give more space for displaying messages.
+set cmdheight=2
+
+" Having longer updatetime (default is 4000 ms = 4 s)
+" leads to noticeable delays and poor user experience.
 set updatetime=100
 
 " Don't pass messages to |ins-completion-menu|.
@@ -35,13 +40,22 @@ set shortmess+=c
 
 set signcolumn=yes
 set pumheight=10
-set splitright "Vertical split right
-set splitbelow "Horizontal split left
 
+"Vertical split right
+set splitright
+
+"Horizontal split left
+set splitbelow
+
+" show line numbers in gutter
 set number
+
+" show relative line numbers
 set relativenumber
 
+" dont wrap long lines
 set nowrap
+
 set whichwrap+=[,],<,>,h,l
 
 set ruler

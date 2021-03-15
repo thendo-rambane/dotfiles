@@ -1,10 +1,11 @@
 " Tab completion
 inoremap <silent> <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
 inoremap <silent> <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<TAB>"
+inoremap <silent> <expr><CR> pumvisible() ? "\<SPACE>" : "\<CR>"
 
 " Buffer manip
-nnoremap <leader><TAB> :bn<CR>
-nnoremap <leader><S-TAB> :bp<CR>
+nnoremap <leader><TAB> :bnext<CR>
+nnoremap <leader><S-TAB> :bprevious<CR>
 nnoremap <silent> <space>f <esc>:%bdelete<CR>:edit #<CR>normal `"<CR>
 nnoremap <silent> <space>d :bd<CR>
 
@@ -23,6 +24,10 @@ vnoremap <A-j> :m '>+1<CR>gv=gv
 vnoremap <A-k> :m '<-2<CR>gv=gv
 vnoremap <A-UP> <A-j>
 vnoremap <A-DOWN> <A-k>
+
+" visual shift text horizontal
+vnoremap > >gv
+vnoremap < <gv
 
 " remap terminal to function like normal/Insert mode
 tnoremap <C-[> <C-\><C-n>
@@ -54,7 +59,7 @@ noremap <silent> <down> j
 noremap <silent> <up> k
 
 "switch off highlighting"
-nnoremap <leader>h :noh<CR>
+nnoremap <leader>h :noh!<CR>
 
 " Escape on save
 inoremap <C-s> <esc>:w<CR>
