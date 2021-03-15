@@ -39,6 +39,20 @@ do
   fi
 done
 
+echo -e "Installing podman\n"
+if [ -z "$(which podman)" ];
+then
+  . /etc/os-release
+  echo "deb https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/xUbuntu_${VERSION_ID}/ /" | sudo tee /etc/apt/sources.list.d/devel:kubic:libcontainers:stable.list
+  curl -L https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/xUbuntu_${VERSION_ID}/Release.key | sudo apt-key add -
+  sudo apt-get update
+  sudo apt-get -y upgrade
+  sudo apt-get -y install podman
+  echo -e "[registries.search]\nregistries = ['docker.io', 'quay.io']" | sudo tee /etc/containers/registries.conf
+else
+  echo "podman already installed"
+fi
+
 if [ -z "$(pip list | grep 'virtualenv')" ];
 then
   pip install virtualenv
