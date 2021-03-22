@@ -1,7 +1,17 @@
 " Tab completion
-inoremap <silent> <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
-inoremap <silent> <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<TAB>"
-inoremap <silent> <expr><CR> pumvisible() ? "\<SPACE>" : "\<CR>"
+" inoremap <silent> <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+" inoremap <silent> <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<TAB>"
+inoremap <silent><expr> <C-Space> compe#complete()
+inoremap <silent><expr> <CR>      compe#confirm('<CR>')
+inoremap <silent><expr> <C-e>     compe#close('<C-e>')
+inoremap <silent><expr> <C-f>     compe#scroll({ 'delta': +4 })
+inoremap <silent><expr> <C-d>     compe#scroll({ 'delta': -4 })
+
+
+inoremap jj <ESC>
+inoremap kk <ESC>
+inoremap hh <ESC>
+inoremap ll <ESC>
 
 " Buffer manip
 nnoremap <leader><TAB> :bnext<CR>
@@ -71,12 +81,3 @@ vnoremap <C-s> :w<CR>
 "===============================================================
 
 " mappings
-nnoremap <silent> <space><space> :<C-u>CocFzfList<CR>
-nnoremap <silent> <space>a       :<C-u>CocFzfList diagnostics<CR>
-nnoremap <silent> <space>b       :<C-u>CocFzfList diagnostics --current-buf<CR>
-nnoremap <silent> <space>c       :<C-u>CocFzfList commands<CR>
-nnoremap <silent> <space>e       :<C-u>CocFzfList extensions<CR>
-nnoremap <silent> <space>l       :<C-u>CocFzfList location<CR>
-nnoremap <silent> <space>o       :<C-u>CocFzfList outline<CR>
-nnoremap <silent> <space>s       :<C-u>CocFzfList symbols<CR>
-nnoremap <silent> <space>p       :<C-u>CocFzfListResume<CR>

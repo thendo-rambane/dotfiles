@@ -3,6 +3,7 @@
 lspList=(
   "bash-language-server"
   "vscode-css-languageserver-bin"
+  "sql-language-server"
   "dockerfile-language-server-nodejs"
   "vscode-html-languageserver-bin"
   "typescript"
@@ -22,3 +23,13 @@ do
     echo -e $lsp" Installed"
   fi
 done
+
+echo -e "Installing Lua"
+git clone https://github.com/sumneko/lua-language-server
+cd lua-language-server
+git submodule update --init --recursive
+
+cd 3rd/luamake
+ninja -f ninja/linux.ninja
+cd ../..
+./3rd/luamake/luamake rebuild

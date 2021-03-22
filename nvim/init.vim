@@ -3,6 +3,7 @@ if !exists('g:vscode')
   source ~/dotfiles/nvim/keys.vim
   source ~/dotfiles/nvim/settings.vim
   source ~/dotfiles/nvim/nvim-lsp.vim
+  source ~/dotfiles/nvim/treesitter-colors.vim
   " source ~/dotfiles/nvim/coc.vim
 
   let g:loaded_ruby_support = 0
@@ -31,7 +32,7 @@ if !exists('g:vscode')
   let g:airline_powerline_fonts = 1
   let g:airline#extensions#tabline#enabled = 1
 
-  highlight LineNr term=bold ctermfg=DarkGrey
+  " highlight LineNr term=bold ctermfg=DarkGrey
 else
   source ~/dotfiles/nvim/vscodeInitFile.vim
 endif
