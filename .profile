@@ -30,3 +30,13 @@ fi
 if [ -d "$HOME/installs/" ] ; then
     PATH="$HOME/installs:$PATH"
 fi
+
+if [ -d "$HOME/dotfiles/bin" ] ; then
+    PATH="$HOME/dotfiles/bin:$PATH"
+fi
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+source "$HOME/.cargo/env"
+alias laravel=laravel.sh
+alias docker=podman
+

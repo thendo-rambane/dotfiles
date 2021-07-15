@@ -74,6 +74,8 @@ set statusline^=%{FugitiveStatusline()}
 autocmd BufWritePre *.py execute ':Black'
 let g:ale_fixers = {
     \   'javascript': ['prettier'],
+    \   'vue': ['prettier'],
+    \   'typescript': ['prettier'],
     \   'html': ['prettier'],
     \   'htmldjango': ['prettier'],
     \   'css': ['prettier'],
@@ -91,4 +93,4 @@ let g:vsnip_filetypes.htmldjango = ['html']
 " emmet settings
 let g:user_emmet_leader_key=','
 
-
+let g:languagetool_server_jar='$HOME/.local/bin/LanguageTool-5.4-SNAPSHOT/languagetool-server.jar'

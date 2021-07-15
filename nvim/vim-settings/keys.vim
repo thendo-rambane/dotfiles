@@ -11,7 +11,7 @@ inoremap <silent><expr> <C-d>     compe#scroll({ 'delta': -4 })
 inoremap jj <ESC>
 inoremap kk <ESC>
 inoremap hh <ESC>
-inoremap ll <ESC>
+" inoremap ll <ESC>
 
 " Buffer manip
 nnoremap <leader><TAB> :bnext<CR>

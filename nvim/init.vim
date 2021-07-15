@@ -1,11 +1,4 @@
 if !exists('g:vscode')
-  source ~/dotfiles/nvim/plugins.vim
-  source ~/dotfiles/nvim/keys.vim
-  source ~/dotfiles/nvim/settings.vim
-  source ~/dotfiles/nvim/nvim-lsp.vim
-  source ~/dotfiles/nvim/treesitter-colors.vim
-  " source ~/dotfiles/nvim/coc.vim
-
   let g:loaded_ruby_support = 0
   if has("win32") || has("win16")
     let g:python_host_prog =  '~/virtualenvs/pynvim2/Script/python.exe'
@@ -33,6 +26,5 @@ if !exists('g:vscode')
   let g:airline#extensions#tabline#enabled = 1
 
   " highlight LineNr term=bold ctermfg=DarkGrey
-else
-  source ~/dotfiles/nvim/vscodeInitFile.vim
 endif
+source ~/dotfiles/nvim/vim-settings/source.vim

@@ -5,7 +5,7 @@ call plug#begin('~/.nvim/plugged')
   " Plug 'antoinemadec/coc-fzf'
   Plug 'dense-analysis/ale'
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-
+  Plug 'vigoux/LanguageTool.nvim'
   Plug 'norcalli/nvim-colorizer.lua'
   Plug 'nvim-treesitter/playground'
   Plug 'p00f/nvim-ts-rainbow'
@@ -16,6 +16,7 @@ call plug#begin('~/.nvim/plugged')
   Plug 'ctrlpvim/ctrlp.vim'
   Plug 'christoomey/vim-tmux-navigator'       " allows c-h, c-l, navigation
   Plug 'flazz/vim-colorschemes'               " batch of colors
+  Plug 'latex-lsp/texlab'
   Plug 'psf/black', { 'branch': 'stable' }
   "fzf
   Plug 'junegunn/fzf', {'dir': '~/.fzf','do': './install --all'}
@@ -43,6 +44,7 @@ call plug#begin('~/.nvim/plugged')
   Plug 'nvim-lua/popup.nvim'
   Plug 'nvim-lua/plenary.nvim'
   Plug 'nvim-telescope/telescope.nvim'
+  Plug 'lervag/vimtex'
   Plug 'fatexii/emmet-compe'
 call plug#end()
 

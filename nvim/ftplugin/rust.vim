@@ -5,3 +5,5 @@ if exists("+colorcolumn")
 	setlocal cc=80
 endif
 
+autocmd BufWrite *.rs execute ':RustFmt'
+

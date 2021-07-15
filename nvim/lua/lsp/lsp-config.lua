@@ -1,8 +1,8 @@
 local on_attach = function(client, bufnr)
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
-  local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
+  -- local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
 
-  buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
+  -- buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
 
   -- Mappings.
   local opts = { noremap=true, silent=true }
@@ -15,12 +15,14 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
   buf_set_keymap('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
   buf_set_keymap('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
-  buf_set_keymap('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
+  buf_set_keymap('n', '<F2>', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
   buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
   buf_set_keymap('n', '<space>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
   buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
   buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
   buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
+  buf_set_keymap('n', '<F3>', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
+  buf_set_keymap('i', '<F3>', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
 
   -- Set some keybinds conditional on server capabilities
   if client.resolved_capabilities.document_formatting then
@@ -43,11 +45,18 @@ if client.resolved_capabilities.document_highlight then
     ]], false)
     end
 end
-
--- Use a loop to conveniently both setup defined servers
--- and map buffer local keybindings when the language server attaches
+local util = require 'lspconfig/util'
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
+capabilities.textDocument.completion.completionItem.resolveSupport = {
+  properties = {
+    'documentation',
+    'detail',
+    'additionalTextEdits',
+  }
+}
+
+
 -- BASH
 require'lspconfig'.bashls.setup{
   on_attach = on_attach,
@@ -108,6 +117,10 @@ require'lspconfig'.html.setup {
   filetypes = {'html', 'htmldjango'}
 }
 
+require'lspconfig'.texlab.setup {
+  on_attach = on_attach,
+  capabilities = capabilities
+}
 
 -- SQL
 require'lspconfig'.sqlls.setup{
@@ -121,6 +134,48 @@ require'lspconfig'.sqlls.setup{
 require'lspconfig'.vimls.setup{
   on_attach = on_attach,
   capabilities = capabilities
+}
+
+-- VUE
+require'lspconfig'.vuels.setup{
+  on_attach = function(client)
+    --[[
+      Internal Vetur formatting is not supported out of the box
+
+      This line below is required if you:
+        - want to format using Nvim's native `vim.lsp.buf.formatting**()`
+        - want to use Vetur's formatting config instead, e.g, settings.vetur.format {...}
+    --]]
+    client.resolved_capabilities.document_formatting = true
+    on_attach(client)
+  end,
+  capabilities = capabilities,
+  settings = {
+    vetur = {
+      completion = {
+        autoImport = true,
+        useScaffoldSnippets = true
+      },
+      format = {
+        defaultFormatter = {
+          html = "prettier",
+          js = "prettier",
+          ts = "prettier",
+        }
+      },
+      validation = {
+        template = true,
+        script = true,
+        style = true,
+        templateProps = true,
+        interpolation = true
+      },
+      experimental = {
+        templateInterpolationService = false
+      }
+    }
+  },
+  root_dir = util.root_pattern("header.php", "package.json", "style.css", 'webpack.config.js')
 }
 
 -- LUA
