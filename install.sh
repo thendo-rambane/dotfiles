@@ -2,7 +2,8 @@
 
 echo -e "\n"
 echo "===================================[Symlink .profile]"
-ls -s ./.profile ~/.profile
+rm -f ~/profile
+ls -s ~/dotfiles/.profile ~/.profile
 
 source ~/.profile
 
