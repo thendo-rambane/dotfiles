@@ -129,6 +129,11 @@ require'lspconfig'.sqlls.setup{
   cmd = {"sql-language-server", "up", "--method", "stdio"};
 }
 
+-- PHP
+require'lspconfig'.phpactor.setup{
+  on_attach = on_attach,
+  capabilities = capabilities
+}
 
 -- VIM
 require'lspconfig'.vimls.setup{
