@@ -36,7 +36,10 @@ if [ -d "$HOME/dotfiles/bin" ] ; then
 fi
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-source "$HOME/.cargo/env"
-alias laravel=laravel.sh
-alias docker=podman
 
+source "$HOME/.cargo/env"
+
+alias laravel=laravel.sh
+alias sail='[ -f sail ] && bash sail || bash vendor/bin/sail'
+alias docker=podman
+alias Docker=podman
