@@ -3,12 +3,28 @@ echo -e "\n"
 echo "======================================[Create .gitconfig]"
 
 read -p "Enter git Email: " git_email
+if [ -z "$git_email" ];
+then
+	git_email="rambane.t.r@gmail.com"
+fi
 read -p "Enter git Name: " git_name
+if [ -z "$git_name" ];
+then
+	git_name="Thendo Rambane"
+fi
 read -p "Enter git Username: " git_username
-
-git_config_file="$HOME/dotfiles/.gitconfig"
+if [ -z "$git_username" ];
+then
+	git_username="fatexii"
+fi
+dotfiles_dir="$HOME/.dotfiles"
+git_config_file="$dotfiles_dir/.gitconfig"
+home_config_file="$HOME/.gitconfig"
+rm -rf "$dotfiles_dir"
+echo -e "$dotfiles_dir\n"
+mkdir "$dotfiles_dir"
 rm -rf $git_config_file
-rm -rf $HOME/.gitconfig
+rm -rf $home_config_file
 touch $git_config_file
 git_config_file_contents="[user]\n"
 git_config_file_contents=$git_config_file_contents"\temail = ${git_email}\n"
@@ -20,8 +36,7 @@ echo -e "${git_config_file_contents}" > $git_config_file
 
 echo -e "\n"
 echo "===================================[Symlink .gitconfig]"
-ln -s "$git_config_file" $HOME/.gitconfig
-
+ln -s "$git_config_file" "$home_config_file"
 echo -e "\n"
 echo "=========================================[Git ssh config]"
 
@@ -59,7 +74,12 @@ then
   git_pub_api_key="$(cat "$git_key_dir")"
 fi
 
-bash $HOME/dotfiles/scripts/git_ssh_config.sh $git_email $git_username $git_pub_api_key $ssh_pub_key_title
+ssh_config_script="$dotfiles_dir/scripts/git_ssh_config.sh"
+if [ ! -e "$ssh_config_script" ];
+then
+	ssh_config_script="./git_ssh_config.sh"
+fi
+bash $ssh_config_script $git_email $git_username $git_pub_api_key $ssh_pub_key_title
 
 
 
